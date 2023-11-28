@@ -1,7 +1,5 @@
 const {expect} = require('@playwright/test');
 
-import * as onLambdaSite from "../page-locators/examplePageLocators"
-
 exports.LambdaHomePage = class LambdaHomePage {
     
     /**
