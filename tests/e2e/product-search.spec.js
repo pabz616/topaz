@@ -6,7 +6,7 @@ const {LambdaHomePage} = require('./page-objects/homePage')
 
 
 test.describe('Open site and perform a search', () => {
-    test(`Search for existing product by name`, async ({page}) => {
+    test('Search for existing product by name', async ({page}) => {
         const onLambdaSite = new LambdaHomePage(page);
         await page.goto(LambdaSite);
         await onLambdaSite.search(productName)
@@ -21,13 +21,13 @@ test.describe('Open site and perform a search', () => {
         await expect(errorMsg).toBeVisible
     });
 
-    test(`Search by product brand`, async ({page}) => {
+    test('Search by product brand', async ({page}) => {
         const onLambdaSite = new LambdaHomePage(page);
         await page.goto(LambdaSite);
         await onLambdaSite.search(brand)
     });
 
-    test(`Search by product number`, async ({page}) => {
+    test('Search by product number', async ({page}) => {
         const onLambdaSite = new LambdaHomePage(page);
         await page.goto(LambdaSite);
         await onLambdaSite.search(productNumber)
