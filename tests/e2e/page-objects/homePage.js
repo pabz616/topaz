@@ -1,3 +1,5 @@
+//PRODUCT SEARCH SCENARIOS
+
 const {expect} = require('@playwright/test');
 
 exports.LambdaHomePage = class LambdaHomePage {
