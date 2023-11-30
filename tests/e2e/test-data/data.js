@@ -7,7 +7,7 @@ let randomProductSelection = items[Math.floor(Math.random () * items.length)]
 
 
 module.exports = {
-    LambdaSite: 'https://ecommerce-playground.lambdatest.io/',
+    baseURL: 'https://ecommerce-playground.lambdatest.io/index.php',
     products: randomProductSelection,
     productName: 'Palm Treo Pro',
     productNumber: randNumbr,
