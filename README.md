@@ -30,3 +30,53 @@ Pesonally I like using:
     |_page-locators
     |_specs
 ```
+
+## PAGE-Object Template
+
+A quick and painless reference to set up the page objects
+
+1. Create a directory under the root of the test directory -- `page-objects`
+2. Create files for the relevant names of the pages under test -- `nameOfPage.js`
+3. In the file, use the following boilerplate and customize accordingly
+   ```
+   exports.myPage = class myPage {
+    
+    /**
+   * @param {import('@playwright/test').Page} page
+   */
+
+    //LOCATORS
+    constructor(page) {
+        this.page = page;
+        this.x = page.locator("span.title", {hasText: 'Mega Menu' })
+        this.y = page.locator('//xpath')
+        this.z = page.locator('#id')
+    }
+
+    //ACTIONS
+    async action (term) {
+        await this.locator.hover()
+        await this.link.click()
+        await this.button.click()
+    
+    //ASSERTIONS
+        await expect(this.locator).toBeVisible()
+        await expect(this.locator).toHaveValue("1")
+    }
+
+  }
+
+   ```
+
+4. In the test, import the class and functions, as in the following example:
+```
+const {LambdaHomePage} = require('./page-objects/homePage')
+
+test.describe('Open site and perform a search', () => {
+    test('Search for existing product by name', async ({page}) => {
+        const onLambdaSite = new LambdaHomePage(page);
+        
+        await page.goto(LambdaSite);
+        await onLambdaSite.search(productName)
+    });
+```
