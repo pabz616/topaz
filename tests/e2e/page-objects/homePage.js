@@ -14,10 +14,10 @@ exports.HomePage = class HomePage {
         
         //MAIN NAVIGATION RAIL
         this.menuTitle = page.locator("span.title", {hasText: 'Mega Menu' })
+        this.logoutLink = page.locator(':nth-match(:text("Logout"), 2)')
         this.myAccountMenu = page.locator(':nth-match(:text("My account"), 2)')
 
         //MY ACCOUNT DROPDOWN
-        this.loginLink = page.locator("span.title", {hasText: 'Login' })
         this.registerLink = page.locator("span.title", {hasText: 'Register' })      
 
         //MENU NAV LINKS
@@ -55,5 +55,6 @@ exports.HomePage = class HomePage {
         await this.registerLink.click()
         await expect(this.page).toHaveURL(baseURL+'?route=account/register')
     }
+
 }
 

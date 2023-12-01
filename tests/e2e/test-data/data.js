@@ -11,5 +11,14 @@ module.exports = {
     products: randomProductSelection,
     productName: 'Palm Treo Pro',
     productNumber: randNumbr,
-    brand: 'Apple'
+    brand: 'Apple',
+    fname:'QA',
+    lname:'QA'+randNumbr,
+    email:'qa@email.com',
+    tel:'qa247',
+    pwd:'qa247',
+    mixedChar: 'Lorem ipsum Римский 北京位於華北平原的西北边缘',
+    longCharacters: 'Loremipsumdolorsiaametlasjdfklldf',
+    jsInjection: '<scrip>alert("boo!")</script>'
+
 }

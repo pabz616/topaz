@@ -1,4 +1,5 @@
 const {expect} = require('@playwright/test');
+const { fname,lname, email, tel, pwd} = require('../test-data/data')
 
 exports.AccountRegistrationPage = class AccountRegistrationPage {
     
@@ -57,6 +58,16 @@ exports.AccountRegistrationPage = class AccountRegistrationPage {
         this.navColRt_returnsLink = page.locator('//a[contains(.,"Returns")]')
         this.navColRt_transactionsLink = page.locator('//a[contains(.,"Transactions")]')
         this.navColRt_newsletterLink = page.locator('//a[contains(.,"Newsletter")]')
+
+        //Error MSg
+        this.validationError = page.locator('//div[contains(@class,"alert-danger")]')
+        this.inputValidation = page.locator('//div[contains(@class,"text-danger")]')
+      
+        this.firstNameInputError = page.locator('(//div[contains(@class,"text-danger")])[1]')
+        this.lastNameInputError = page.locator('(//div[contains(@class,"text-danger")])[2]')
+        this.emailInputError = page.locator('(//div[contains(@class,"text-danger")])[3]')
+        this.telephoneInputError = page.locator('(//div[contains(@class,"text-danger")])[4]')
+        this.passwordInputError = page.locator('(//div[contains(@class,"text-danger")])[5]')
 
     }
 
@@ -170,11 +181,15 @@ exports.AccountRegistrationPage = class AccountRegistrationPage {
 
     //ACTIONS
     async submitRegistrationForm () {
-        await this.menuTitle.hover()
-        await this.desktopLink.click()
-        await this.palmTreoProLink.click()
-        await this.addToCart.click();
-        await this.viewCart.click()    
+          await this.firstNameInput.fill(fname)
+          await this.lastNameInput.fill(lname)
+          await this.emailInput.fill(email)
+          await this.telephoneInput.fill(tel)
+          await this.passwordInput.fill(pwd)
+          await this.confirmPasswordInput.fill(pwd)
+        //   await this.subscribe_Yes.click()
+          await this.privacyPolicyAgreementLabel.click()
+          await this.continueButton.click()
     }
 
 }
