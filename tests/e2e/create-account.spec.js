@@ -14,7 +14,7 @@ test.describe('Account Registration', () => {
         await onAccountRegistrationPage.checkUI()
     });
 
-    test('Customer Submits Blank Registration', async ({page}) => {
+    test('Validation Error Shown For Required Fields (Blank Submission)', async ({page}) => {
         const onHomePage = new HomePage(page);
         const onAccountRegistrationPage = new AccountRegistrationPage(page);
 
