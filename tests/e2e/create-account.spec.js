@@ -185,7 +185,7 @@ test.describe('Account Registration', () => {
         await expect(onAccountRegistrationPage.validationError).toHaveText('Warning: E-Mail Address is already registered!')
     });
 
-    //TODO: FUTURE UPDATE - Password Stregth Enforcement (test for weak passwords, password length common words like 'password')
+    //TODO: FUTURE UPDATE - Password Strength Enforcement (test for weak passwords, password length common words like 'password')
 
     test('Customer Completes Registration', async ({page}) => {
         const onHomePage = new HomePage(page);
