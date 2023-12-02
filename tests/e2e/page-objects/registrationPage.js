@@ -71,6 +71,7 @@ exports.AccountRegistrationPage = class AccountRegistrationPage {
 
     }
 
+    //ACTIONS
     async checkUI() {
         //CHECK THE BREADCRUMBS
         await expect(this.homeBrCr).toBeVisible()
@@ -179,7 +180,6 @@ exports.AccountRegistrationPage = class AccountRegistrationPage {
         await expect(this.navColRt_newsletterLink).not.toBeDisabled()
     }
 
-    //ACTIONS
     async submitRegistrationForm () {
           await this.firstNameInput.fill(fname)
           await this.lastNameInput.fill(lname)

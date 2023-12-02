@@ -9,22 +9,34 @@ exports.LoginPage = class LoginPage {
     //LOCATORS
     constructor(page) {
         this.page = page;
-        this.x = page.locator("span.title", {hasText: 'Mega Menu' })
-        this.y = page.locator('//xpath')
-        this.z = page.locator('#id')
+
+        //Breadcrumbs
+        this.homeBrCr = page.locator('(//li[@class="breadcrumb-item"])[1]')
+        this.accountBrCr = page.locator('(//li[@class="breadcrumb-item"])[2]')
+        this.loginBrCr = page.locator('//li[@class="breadcrumb-item active"]')
+
+        //Login Form
+        this.emailInput = page.locator('#input-email')
+        this.passwordInput = page.locator('input-password')
+        this.loginButton = page.locator('//input[@value="Login"]')   
     }
 
     //ACTIONS
-    async action (term) {
-        await this.menuTitle.hover()
-        await this.desktopLink.click()
-        await this.palmTreoProLink.click()
-        await this.addToCart.click();
-        await this.viewCart.click()
-    
-    //ASSERTIONS
-        await expect(this.searchResults).toBeVisible()
-        await expect(this.searchResultQty).toHaveValue("1")
+    async checkUI (t) {
+        //TODO: this
+        
+        //BReadcrumbs
+        //New Customer Module
+        //Login Module
+        //Navigation Module
+    }
+
+    async submit_login (email, pwd) {
+        this.emailInput.fill(email)
+        this.passwordInput.fill(pwd)
+        this.loginButton.click()
+
+        //TODO: this  
     }
 
 }
