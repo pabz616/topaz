@@ -1,6 +1,6 @@
 //PRODUCT SEARCH SCENARIOS
 
-const {expect} = require('@playwright/test');
+const { expect } = require('@playwright/test');
 const { baseURL} = require('../test-data/data');
 
 exports.HomePage = class HomePage {
@@ -15,10 +15,12 @@ exports.HomePage = class HomePage {
         //MAIN NAVIGATION RAIL
         this.menuTitle = page.locator("span.title", {hasText: 'Mega Menu' })
         this.logoutLink = page.locator(':nth-match(:text("Logout"), 2)')
+        this.logoutContinueButton = page.locator('(//a[contains(@class,"btn-primary")])[2]]'),
         this.myAccountMenu = page.locator(':nth-match(:text("My account"), 2)')
 
         //MY ACCOUNT DROPDOWN
-        this.registerLink = page.locator("span.title", {hasText: 'Register' })      
+        this.registerLink = page.locator("span.title", {hasText: 'Register' })
+        this.loginLink = page.locator("span.title", {hasText: 'Login' })         
 
         //MENU NAV LINKS
         this.desktopLink = page.locator("a[title=Desktop]")
@@ -44,7 +46,7 @@ exports.HomePage = class HomePage {
 
     async navigateToLoginPage() {
         await this.myAccountMenu.hover()
-        await expect(this.loginLink).toBeVisible.click()
+        await expect(this.loginLink).toBeVisible()
         await this.loginLink.click()
         await expect(this.page).toHaveURL(baseURL+'?route=account/login')
     }
@@ -54,6 +56,17 @@ exports.HomePage = class HomePage {
         await expect(this.registerLink).toBeVisible()
         await this.registerLink.click()
         await expect(this.page).toHaveURL(baseURL+'?route=account/register')
+    }
+
+    async logOut(){
+        await this.myAccountMenu.hover()
+        await expect(this.logoutLink).toBeVisible()
+        await this.loginLink.click()
+        await expect(this.page).toHaveURL(baseURL+'?route=account/logout')
+
+        //TODO: UI Check for this page
+        await this.logoutContinueButton.click()
+        await expect(this.page).toHaveURL(baseURL+'?route=common/home')
     }
 
 }
