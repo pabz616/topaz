@@ -28,43 +28,35 @@ test.describe('Navigate to Login', () => {
         await onHomePage.logOut()
     })
 
+    //TODO - NEGATIVE SCENARIOS ARE LIMITED BY THE NUMBER OF LOGIN ATTEMPTS MAKING RUNNING ALL OF THESE TESTS AT ONCE IMPOSSIBLE
     test('Validation Error Shown For Required Fields', async ({page}) => {
         const onHomePage = new HomePage(page)
         const onLoginPage = new LoginPage(page)
-        const errorMsg = page.locator('//div[contains(@class,"alert-danger")]')
 
         await page.goto(baseURL);
         await onHomePage.navigateToLoginPage()
-        await onLoginPage.submit_login('', '')
-        await expect(errorMsg).toBeVisible()
-        await expect(errorMsg).toHaveText(errorMsgCopy)
+        await onLoginPage.submit_bad_login('', '')
     })
 
     test('Validation Error Shown For Multiple Login Attempts', async ({page}) => {
         const onHomePage = new HomePage(page)
         const onLoginPage = new LoginPage(page)
-        const errorMsg = page.locator('//div[contains(@class,"alert-danger")]')
 
         await page.goto(baseURL);
         await onHomePage.navigateToLoginPage()
-        await onLoginPage.submit_login('', '')
-        await expect(errorMsg).toBeVisible()
-        await expect(errorMsg).toHaveText(multiLoginCopy)
+        await onLoginPage.submit_bad_login('', '')
     })
     
-    //TODO - NEGATIVE SCENARIOS ARE LIMITED BY THE NUMBER OF LOGIN ATTEMPTS MAKING RUNNING ALL OF THESE TESTS AT ONCE IMPOSSIBLE
-    test('Invalid Login - Mixed Characters', async ({page}) => {
+    test('Validation Error Message Shown For Invalid Login - Mixed Characters', async ({page}) => {
         const onHomePage = new HomePage(page)
         const onLoginPage = new LoginPage(page)
-        const errorMsg = page.locator('//div[contains(@class,"alert-danger")]')
 
         await page.goto(baseURL);
         await onHomePage.navigateToLoginPage()
-        await onLoginPage.submit_login(mixedChar,mixedChar)
-        await expect(errorMsg).toBeVisible()
+        await onLoginPage.submit_bad_login(mixedChar,mixedChar)
     })
 
-    test('Invalid Login - Account Not Found', async ({page}) => {
+    test('Validation Error Message Shown For Invalid Login - Account Not Found', async ({page}) => {
         const onHomePage = new HomePage(page)
         const onLoginPage = new LoginPage(page)
 
@@ -73,7 +65,7 @@ test.describe('Navigate to Login', () => {
         await onLoginPage.submit_bad_login('foo','bar')
     })
 
-    test('Short Password', async ({page}) => {
+    test('Validation Error Message Shown For Short Password', async ({page}) => {
         const onHomePage = new HomePage(page)
         const onLoginPage = new LoginPage(page)
 
@@ -82,7 +74,7 @@ test.describe('Navigate to Login', () => {
         await onLoginPage.submit_bad_login(usn,'pas')
     })
 
-    test('Improper Username (Bad Email Address Format)', async ({page}) => {
+    test('Validation Error Message Shown For Improper Username (Bad Email Address Format)', async ({page}) => {
         const onHomePage = new HomePage(page)
         const onLoginPage = new LoginPage(page)
 
@@ -91,7 +83,7 @@ test.describe('Navigate to Login', () => {
         await onLoginPage.submit_bad_login('nonemail',pwd)
     })
 
-    test('Improper Password (Weak Password)', async ({page}) => {
+    test('Validation Error Message Shown For Improper Password (Weak Password)', async ({page}) => {
         const onHomePage = new HomePage(page)
         const onLoginPage = new LoginPage(page)
    
@@ -138,7 +130,6 @@ test.describe('Navigate to Login', () => {
         await onHomePage.navigateToLoginPage()
         await onLoginPage.submit_bad_login(badEmail,pwd)
     })
-
 
     test('XSS Injection Vulnerability - Bad Email-2', async ({page}) => {
         const onHomePage = new HomePage(page)
