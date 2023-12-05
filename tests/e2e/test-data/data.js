@@ -15,10 +15,12 @@ module.exports = {
     fname:'QA',
     lname:'QA'+randNumbr,
     email:'qa@email.com',
-    tel:'qa247',
+    tel:'2123334455',
     pwd:'qa247',
     mixedChar: 'Lorem ipsum Римский 北京位於華北平原的西北边缘',
     longCharacters: 'Loremipsumdolorsiaametlasjdfklldf',
-    jsInjection: '<scrip>alert("boo!")</script>'
+    sqlInjection: " 'OR 1=1'--",
+    errorMsgCopy: 'Warning: No match for E-Mail Address and/or Password.',
+    multiLoginCopy: 'Warning: Your account has exceeded allowed number of login attempts. Please try again in 1 hour.'
 
 }
