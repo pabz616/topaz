@@ -16,7 +16,7 @@ test.describe('Navigate to Login', () => {
         await onLoginPage.checkUI()
     })
 
-    test('Submit Account Login', async ({page}) => {
+    test.only('Submit Account Login', async ({page}) => {
         const onHomePage = new HomePage(page)
         const onLoginPage = new LoginPage(page)
         const MyAccountHeader = page.locator('(//h2[@class="card-header h5"])[1]')

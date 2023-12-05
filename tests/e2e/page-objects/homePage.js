@@ -15,7 +15,7 @@ exports.HomePage = class HomePage {
         //MAIN NAVIGATION RAIL
         this.menuTitle = page.locator("span.title", {hasText: 'Mega Menu' })
         this.logoutLink = page.locator(':nth-match(:text("Logout"), 2)')
-        this.logoutContinueButton = page.locator('(//a[contains(@class,"btn-primary")])[2]]'),
+        this.logoutContinueButton = page.locator('(//a[contains(@class,"btn-primary")])[2]'),
         this.myAccountMenu = page.locator(':nth-match(:text("My account"), 2)')
 
         //MY ACCOUNT DROPDOWN
@@ -61,7 +61,7 @@ exports.HomePage = class HomePage {
     async logOut(){
         await this.myAccountMenu.hover()
         await expect(this.logoutLink).toBeVisible()
-        await this.loginLink.click()
+        await this.logoutLink.click()
         await expect(this.page).toHaveURL(baseURL+'?route=account/logout')
 
         //TODO: UI Check for this page
