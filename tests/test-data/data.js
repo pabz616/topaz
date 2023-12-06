@@ -8,6 +8,7 @@ let randomProductSelection = items[Math.floor(Math.random () * items.length)]
 
 module.exports = {
     baseURL: 'https://ecommerce-playground.lambdatest.io/index.php',
+    apiURL: 'https://restful-booker.herokuapp.com',
     products: randomProductSelection,
     productName: 'Palm Treo Pro',
     productNumber: randNumbr,
