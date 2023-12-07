@@ -1,5 +1,5 @@
 const {expect} = require('@playwright/test');
-const { baseURL} = require('../test-data/data');
+const baseURL = require('../../test-data/data');
 
 exports.LoginPage = class LoginPage {
     

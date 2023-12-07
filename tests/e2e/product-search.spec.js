@@ -1,7 +1,7 @@
 // PRODUCT SEARCH
 
 const { test, expect } = require('@playwright/test');
-const { baseURL, productName, productNumber, brand, products} = require('./test-data/data');
+const { baseURL, productName, productNumber, brand, products} = require('../test-data/data')
 const {HomePage} = require('./page-objects/homePage')
 
 

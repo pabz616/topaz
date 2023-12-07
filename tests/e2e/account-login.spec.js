@@ -1,7 +1,7 @@
 //ACCOUNT LOGIN
 
 const { test, expect } = require('@playwright/test');
-const { baseURL,email, pwd, errorMsgCopy, multiLoginCopy, longCharacters, sqlInjection} = require('./test-data/data');
+const { baseURL,email, pwd, errorMsgCopy, multiLoginCopy, longCharacters, sqlInjection} = require('../test-data/data')
 const {HomePage} = require('./page-objects/homePage')
 const {LoginPage} = require('./page-objects/loginPage')
 

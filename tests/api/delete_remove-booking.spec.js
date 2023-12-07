@@ -5,7 +5,7 @@ const { apiURL } = require('../test-data/data');
 var token 
 
 test.describe('@api', () => {
-    test('Partial update of a booking record', async({ request }) =>{
+    test('Delete a record', async({ request }) =>{
         //CREATE AUTH TOKEN
         const response = await request.post(apiURL+'/auth', {
             data: {
@@ -19,7 +19,7 @@ test.describe('@api', () => {
         const responseBody = await response.json()
         token = responseBody.token
     
-        //UPDATE RECORD
+        //DELETE RECORD
         const deleteRequest = await request.delete(apiURL+'/booking/1', {
             headers: {
                 'Content-Type': 'application/json',

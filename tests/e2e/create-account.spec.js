@@ -1,5 +1,5 @@
 const { test, expect } = require('@playwright/test');
-const { baseURL, longCharacters} = require('./test-data/data')
+const { baseURL, longCharacters} = require('../test-data/data')
 const {HomePage} = require('./page-objects/homePage')
 const {AccountRegistrationPage} = require('./page-objects/registrationPage')
 

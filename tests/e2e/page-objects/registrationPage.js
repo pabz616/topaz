@@ -1,5 +1,5 @@
 const {expect} = require('@playwright/test');
-const { fname,lname, email, tel, pwd} = require('../test-data/data')
+const { fname,lname, email, tel, pwd} = require('../../test-data/data')
 
 exports.AccountRegistrationPage = class AccountRegistrationPage {
     

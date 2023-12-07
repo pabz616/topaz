@@ -23,14 +23,12 @@ test.describe('@api', () => {
     });
     
     //RESTFUL BOOKER - POST USING FAKER LIBRARY
-    
-    const randomFirstName = faker.name.firstName()
-    const randomLastName = faker.name.lastName()
-    const randomPrice = faker.random.numeric(4)
-    const currentDate = DateTime.now().toFormat('yyyy-MM-dd')
-    const inFiveDays = DateTime.now().plus({ days: 5 }).toFormat('yyyy-MM-dd')
-    
     test('Should be able to create a booking w. dynamic data', async ({ request }) => {
+        const randomFirstName = faker.person.firstName()
+        const randomLastName = faker.person.lastName()
+        const randomPrice = faker.string.numeric(4)
+        const currentDate = DateTime.now().toFormat('yyyy-MM-dd')
+        const inFiveDays = DateTime.now().plus({ days: 5 }).toFormat('yyyy-MM-dd')
         const response = await request.post(apiURL+'/booking', {
             data: {
                 "firstname": randomFirstName,

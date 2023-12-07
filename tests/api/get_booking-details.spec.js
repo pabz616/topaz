@@ -7,8 +7,6 @@ test.describe('@api', () => {
         const response = await request.get(apiURL+'/booking/4');
         expect(response.ok()).toBeTruthy();
         expect(response.status()).toBe(200);
-    
-        console.log(await response.json());
     })
     
     test('Get specific booking details', async({ request }) =>{
@@ -23,8 +21,6 @@ test.describe('@api', () => {
         expect(responseBody["lastname"]).not.toBeNull()
         expect(responseBody["totalprice"]).not.toBeNaN()
         expect(responseBody["bookingdates"]).not.toBeNull()
-        // expect(responseBody["bookingdates"]["checkin"]).toEqual('2015-02-23')
-        // expect(responseBody["bookingdates"]["checkout"]).toEqual('2018-03-04' )
     })
     
     test('Get specific booking details by name', async({ request }) =>{
@@ -36,9 +32,6 @@ test.describe('@api', () => {
         })
         expect(response.ok()).toBeTruthy();
         expect(response.status()).toBe(200);
-        console.log(await response.json());
-    
-        const responseBody = await response.json();
         expect(responseBody.booking).not.toBeNull()
     })
     
@@ -51,10 +44,6 @@ test.describe('@api', () => {
         })
         expect(response.ok()).toBeTruthy();
         expect(response.status()).toBe(200);
-    
-        console.log(await response.json());
-    
-        const responseBody = await response.json();
         expect(responseBody.booking).not.toBeNull()
     })
     
@@ -66,10 +55,6 @@ test.describe('@api', () => {
         })
         expect(response.ok()).toBeTruthy();
         expect(response.status()).toBe(200);
-    
-        console.log(await response.json());
-    
-        const responseBody = await response.json();
         expect(responseBody.booking).not.toBeNull()
     })
 })
