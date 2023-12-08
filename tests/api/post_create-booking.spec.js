@@ -11,7 +11,6 @@ test.describe('@api', () => {
         const response = await request.post(apiURL+'/booking', {
             data:bookingDetails
         });
-        console.log(await response.json());
         expect(response.ok()).toBeTruthy();
         expect(response.status()).toBe(200);
         
@@ -42,7 +41,7 @@ test.describe('@api', () => {
                 "additionalneeds": "Breakfast"
             }
         });
-        console.log(await response.json());
+
         expect(response.ok()).toBeTruthy();
         expect(response.status()).toBe(200);
         

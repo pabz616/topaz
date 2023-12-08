@@ -48,4 +48,5 @@ test.describe('@api', () => {
         expect(updatedResponseBody).toHaveProperty("totalprice", 111);
         expect(updatedResponseBody).toHaveProperty("depositpaid", true);
     })
+
 });
