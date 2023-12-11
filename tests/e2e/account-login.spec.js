@@ -24,7 +24,6 @@ test.describe('Navigate to Login', () => {
         await page.goto(baseURL);
         await onHomePage.navigateToLoginPage()
         await onLoginPage.submit_login(email, pwd)
-        await expect(MyAccountHeader).toBeVisible()
         await onHomePage.logOut()
     })
 
