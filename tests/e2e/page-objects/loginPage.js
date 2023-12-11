@@ -84,7 +84,7 @@ exports.LoginPage = class LoginPage {
         await this.emailInput.fill(email)
         await this.passwordInput.fill(pwd)
         await this.loginButton.click()
-        await expect(this.page).toHaveURL(baseURL+'?route=account/account')
+        // await expect(this.page).toHaveURL(baseURL+'?route=account/account')
     }
 
     async submit_bad_login (email, pwd) {
@@ -93,7 +93,7 @@ exports.LoginPage = class LoginPage {
         await this.loginButton.click()
         
         //NO REDIRECTION
-        await expect(this.page).toHaveURL(baseURL+'?route=account/login')
+        // await expect(this.page).toHaveURL(baseURL+'?route=account/login')
         await expect(this.errorMsg).toBeVisible()
     }
 

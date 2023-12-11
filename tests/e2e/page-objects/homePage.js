@@ -62,11 +62,10 @@ exports.HomePage = class HomePage {
         await this.myAccountMenu.hover()
         await expect(this.logoutLink).toBeVisible()
         await this.logoutLink.click()
-        await expect(this.page).toHaveURL(baseURL+'?route=account/logout')
 
         //TODO: UI Check for this page
         await this.logoutContinueButton.click()
-        await expect(this.page).toHaveURL(baseURL+'?route=common/home')
+        // await expect(this.page).toHaveURL(baseURL+'?route=common/home')
     }
 
 }

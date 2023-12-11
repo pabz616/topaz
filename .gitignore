@@ -13,6 +13,7 @@ node_modules/
 jspm_packages/
 
 # Stores VSCode versions used for testing VSCode extensions
+.vscode
 .vscode-test
 
 # yarn v2

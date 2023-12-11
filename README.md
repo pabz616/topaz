@@ -10,6 +10,7 @@ Playwright w. Javascript
 4. For API Testing - Fake data: `npm install --save-dev @faker-js/faker`
 5. For API Testing - Fake date: `npm install --save-dev luxon`
 6. For API Testing - Clean Folder Before Test Run: `npm install --save-dev rimraf`
+7. For Accessibility Testing - `npm install @axe-core/playwright`
 
 ## PW Commands
 
