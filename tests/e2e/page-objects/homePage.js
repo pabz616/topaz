@@ -13,14 +13,19 @@ exports.HomePage = class HomePage {
         this.page = page;
         
         //MAIN NAVIGATION RAIL
-        this.menuTitle = page.locator("span.title", {hasText: 'Mega Menu' })
-        this.logoutLink = page.locator(':nth-match(:text("Logout"), 2)')
-        this.logoutContinueButton = page.locator('(//a[contains(@class,"btn-primary")])[2]'),
+        this.shopByCategoryButton = page.getByRole('button', { hasText: 'Shop by Category' })
+        this.homeButton = page.locator("span.title", {hasText: 'Home' })        
+        this.specialsButton =  page.locator("span.title", {hasText: 'Special' })
+        this.blogButton =  page.locator("span.title", {hasText: 'Blog' })
+        this.megaMenu = page.locator("span.title", {hasText: 'Mega Menu' })
+        this.addOns = page.locator("span.title", {hasText: 'Add Ons' })
         this.myAccountMenu = page.locator(':nth-match(:text("My account"), 2)')
 
         //MY ACCOUNT DROPDOWN
         this.registerLink = page.locator("span.title", {hasText: 'Register' })
-        this.loginLink = page.locator("span.title", {hasText: 'Login' })         
+        this.loginLink = page.locator("span.title", {hasText: 'Login' })
+        this.logoutLink = page.locator(':nth-match(:text("Logout"), 2)')
+        this.logoutContinueButton = page.locator('(//a[contains(@class,"btn-primary")])[2]')         
 
         //MENU NAV LINKS
         this.desktopLink = page.locator("a[title=Desktop]")
@@ -35,7 +40,7 @@ exports.HomePage = class HomePage {
     }
 
     async search (term) {
-        await this.menuTitle.hover()
+        await this.megaMenu.hover()
         await this.desktopLink.click()
         await this.palmTreoProLink.click()
         await this.addToCart.click();
