@@ -1,4 +1,4 @@
-//PRODUCT SEARCH SCENARIOS
+//HOME PAGE
 
 const { expect } = require('@playwright/test');
 const baseURL = require('../../test-data/data')
@@ -37,6 +37,9 @@ exports.HomePage = class HomePage {
 
         this.searchResults = page.locator("td.text-left", {hasText: 'Palm Treo Pro'})
         this.searchResultQty = page.locator("div[class$='flex-nowrap'] > input")
+
+        //BANNER
+        this.bannerAd = page.locator(':nth-match(:class("d-block w-100"), 3)')
     }
 
     async search (term) {
@@ -54,6 +57,11 @@ exports.HomePage = class HomePage {
         await expect(this.loginLink).toBeVisible()
         await this.loginLink.click()
         await expect(this.page).toHaveURL(baseURL+'?route=account/login')
+    }
+
+    async clickBannerAd(){
+        await expect(this.bannerAd).toBeVisible()
+        await this.bannerAdapter.click()
     }
 
     async navigateToRegistrationPage() {
