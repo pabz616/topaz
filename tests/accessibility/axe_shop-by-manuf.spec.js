@@ -5,11 +5,7 @@ const { baseURL }  = require('../test-data/data')
 const AxeBuilder = require('@axe-core/playwright').default
 
 test.describe('@accessibility', () => {
-    test('Accessibility Test | Shop By Product - Apple', async ({page}) => {
-        await page.goto(baseURL+'?route=product/manufacturer/info&manufacturer_id=8');
-        const accessibilityScanResults = await new AxeBuilder({ page }).analyze(); 
-        expect(accessibilityScanResults.violations).toEqual([]);
-    })
+
 
     test('Accessibility Test | Shop By Product - HTC', async ({page}) => {
         await page.goto(baseURL+'?route=product/manufacturer/info&manufacturer_id=5');
@@ -17,8 +13,32 @@ test.describe('@accessibility', () => {
         expect(accessibilityScanResults.violations).toEqual([]);
     })
 
+    test('Accessibility Test | Shop By Product - Palm', async ({page}) => {
+        await page.goto(baseURL+'?route=product/manufacturer/info&manufacturer_id=6');
+        const accessibilityScanResults = await new AxeBuilder({ page }).analyze(); 
+        expect(accessibilityScanResults.violations).toEqual([]);
+    })
+
+    test('Accessibility Test | Shop By Product - Hewlett-Packard', async ({page}) => {
+        await page.goto(baseURL+'?route=product/manufacturer/info&manufacturer_id=7');
+        const accessibilityScanResults = await new AxeBuilder({ page }).analyze(); 
+        expect(accessibilityScanResults.violations).toEqual([]);
+    })
+
+    test('Accessibility Test | Shop By Product - Apple', async ({page}) => {
+        await page.goto(baseURL+'?route=product/manufacturer/info&manufacturer_id=8');
+        const accessibilityScanResults = await new AxeBuilder({ page }).analyze(); 
+        expect(accessibilityScanResults.violations).toEqual([]);
+    })
+
     test('Accessibility Test | Shop By Product - Canon', async ({page}) => {
         await page.goto(baseURL+'?route=product/manufacturer/info&manufacturer_id=9');
+        const accessibilityScanResults = await new AxeBuilder({ page }).analyze(); 
+        expect(accessibilityScanResults.violations).toEqual([]);
+    })
+
+    test('Accessibility Test | Shop By Product - Sony', async ({page}) => {
+        await page.goto(baseURL+'?route=product/manufacturer/info&manufacturer_id=10');
         const accessibilityScanResults = await new AxeBuilder({ page }).analyze(); 
         expect(accessibilityScanResults.violations).toEqual([]);
     })
