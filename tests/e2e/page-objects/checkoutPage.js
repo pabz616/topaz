@@ -41,13 +41,12 @@ exports.CheckoutPage = class CheckoutPage {
         //COUPON INPUT
         //COMMENTS INPUT
         //LEGAL & NEWSLETTER OPT-IN
-        this.termsAndConditionsCheckbox = page.locator('label[@for="input-agree"]')
-        
+        this.termsAndConditionsCheckbox = page.locator('//label[@for="input-agree"]')
     }
 
     async checkUI(){}
 
-    async login(email, pass){
+    async loginAsReturnCustomer(email, pass){
         await expect(this.login).toBeVisible()
         await this.login.click()
 
@@ -74,6 +73,7 @@ exports.CheckoutPage = class CheckoutPage {
         await expect(this.orderComments).toBeVisible()
         await expect(this.orderComments).toBeEmpty()
         await this.orderComments.fill('This is a really cool site to test on')
+        await this.page.keyboard.press('Tab')
     }
 
     async acceptTermsAndConditions(){

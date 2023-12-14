@@ -15,7 +15,7 @@ exports.CartPage = class CartPage {
         //CART SUMMARY
         //CART ACTIONS
         this.continueShoppingButton = page.locator('(//a[contains(@class,"btn-secondary")])[2]')
-        this.checkoutButton = page.locator('(//a[contains(@class,"btn-primary")])[2]')
+        this.checkoutButton = page.locator('//a[contains(.,"Checkout")]')
         //CART DETAILS
     }
 

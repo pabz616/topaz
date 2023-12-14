@@ -33,7 +33,7 @@ test.describe('Open site and perform a search', () => {
         await onPDP.clickAddToCart()
         await onHomePage.navigateToCart()
         await onCartPage.proceedToCheckout()
-        await onCheckoutPage.login(email, pwd)
+        await onCheckoutPage.loginAsReturnCustomer(email, pwd)
         await onCheckoutPage.addComment()
         await onCheckoutPage.acceptTermsAndConditions()
         await onCheckoutPage.continueWithPurchase()
