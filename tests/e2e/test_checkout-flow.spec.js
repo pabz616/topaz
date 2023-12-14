@@ -13,6 +13,10 @@ const {OrderSuccessPage} = require('./page-objects/orderSuccessPage')
 
 
 test.describe('Open site and perform a search', () => {
+    test.beforeEach(async ({page}) =>{
+        await page.goto(baseURL);
+    })
+
     test('PURCHASE FROM SEARCH RESULTS', async ({page}) => {
         const onHomePage = new HomePage(page)
         const onPCP = new ProductCategoryPage(page)
@@ -22,7 +26,6 @@ test.describe('Open site and perform a search', () => {
         const onOrderConfirmationPage = new OrderConfirmationPage(page)
         const onOrderSuccessPage = new OrderSuccessPage(page)
 
-        await page.goto(baseURL);
         await onHomePage.enterSearchTerm(productName)
         await onPCP.selectFirstProduct()
         await onPDP.clickAddToCart()
@@ -47,7 +50,6 @@ test.describe('Open site and perform a search', () => {
         const onOrderConfirmationPage = new OrderConfirmationPage(page)
         const onOrderSuccessPage = new OrderSuccessPage(page)
 
-        await page.goto(baseURL);
         await onHomePage.clickShopByCategoryMenu()
         await onSBCMenu.clickCategoryItem(2)
         await onPCP.selectFirstProduct()
