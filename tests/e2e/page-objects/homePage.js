@@ -66,6 +66,9 @@ exports.HomePage = class HomePage {
         this.bannnerAd2Button = page.locator('(//a[contains(@class,"btn-outline-primary")])[1]')
     }
 
+    async enterSearchTerm (term){
+        
+    }
     async search (term) {
         await this.megaMenu.hover()
         await this.desktopLink.click()

@@ -1,7 +1,7 @@
 // E2E Checkout Flow
 
 const { test, expect } = require('@playwright/test');
-const { baseURL, email, pwd} = require('../test-data/data')
+const { baseURL, productName, email, pwd} = require('../test-data/data')
 const {HomePage} = require('./page-objects/homePage')
 const {ProductDetailsPage} = require('./page-objects/productDetailsPage')
 const {ShopCategoryPage} = require('./page-objects/shopCategoryPage')
@@ -13,8 +13,29 @@ const {OrderSuccessPage} = require('./page-objects/orderSuccessPage')
 
 
 test.describe('Open site and perform a search', () => {
-    //TODO - PURCHASE FROM SEARCH RESULTS
-    test.skip('#name', async ({page}) => {});
+    test('PURCHASE FROM SEARCH RESULTS', async ({page}) => {
+        const onHomePage = new HomePage(page)
+        const onPCP = new ProductCategoryPage(page)
+        const onPDP = new ProductDetailsPage(page)
+        const onCartPage = new CartPage (page)
+        const onCheckoutPage = new CheckoutPage(page)
+        const onOrderConfirmationPage = new OrderConfirmationPage(page)
+        const onOrderSuccessPage = new OrderSuccessPage(page)
+
+        await page.goto(baseURL);
+        await onHomePage.enterSearchTerm(productName)
+        await onPCP.selectFirstProduct()
+        await onPDP.clickAddToCart()
+        await onHomePage.navigateToCart()
+        await onCartPage.proceedToCheckout()
+        await onCheckoutPage.loginAsReturnCustomer(email, pwd)
+        await onCheckoutPage.addComment()
+        await onCheckoutPage.acceptTermsAndConditions()
+        await onCheckoutPage.continueWithPurchase()
+        await onOrderConfirmationPage.confirmPurchaseOrder()
+        await onOrderSuccessPage.completePurchaseWorkflow()
+
+    });
 
     test('PURCHASE FROM SHOP BY CATEGORY MENU', async ({page}) => {
         const onHomePage = new HomePage(page)
@@ -52,15 +73,7 @@ test.describe('Open site and perform a search', () => {
         //checkout flow incomplete .. bug - size required for a camera??
     });
 
-    //TODO - PURCHASE FROM HOME PAGE - PROMO 2 (BELOW BANNER) -- not working!
-    test.skip(' PURCHASE FROM HOME PAGE - PROMO 2 (BELOW BANNER)', async ({page}) => {
-        const onHomePage = new HomePage(page);
-        const onPDP = new ProductDetailsPage(page)
-
-        await page.goto(baseURL);
-        await onHomePage.clickSecondBannerAd()
-    });
-   
+    //TODO - PURCHASE FROM HOME PAGE - PROMO 2 (BELOW BANNER) -- not working!   
     //TODO - PURCHASE FROM HOME PAGE - PROMO 3 (BRAND)
     //TODO - PURCHASE FROM HOME PAGE - TRENDING CATEGORIES    
     //TODO - PURCHASE FROM HOME PAGE - PROMO 4 (HP 25 HEADPHONES)
