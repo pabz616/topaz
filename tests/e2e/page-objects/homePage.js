@@ -12,8 +12,29 @@ exports.HomePage = class HomePage {
     constructor(page) {
         this.page = page;
         
+        //UPPER NAVIGATION RAIL 
+        this.siteIcon = page.locator('#')
+        this.categoriesDropdown = page.locator('(//button[@class="btn dropdown-toggle"])[1]')
+        this.allCategories = page.locator('(//a[@data-category_id="0"])[1]')
+        this.category_Desktops = page.locator('(//a[@data-category_id="20"])[1]')
+        this.category_Laptops = page.locator('(//a[@data-category_id="18"])[1]')
+        this.category_Components = page.locator('(//a[@data-category_id="25"])[1]')
+        this.category_Tablets = page.locator('(//a[@data-category_id="57"])[1]')
+        this.category_Software = page.locator('(//a[@data-category_id="17"])[1]')
+        this.category_PDA = page.locator('(//a[@data-category_id="24"])[1]')
+        this.category_Cameras = page.locator('(//a[@data-category_id="33"])[1]')
+        this.category_MP3 = page.locator('(//a[@data-category_id="34"])[1]')
+
+        this.searchModule = page.locator('//div[@data-id="217822"]')
+        this.searchInput = page.locator('//input[@name="search"]')
+        this.compareItems = page.locator('//div[@data-id="217823"]')
+        this.favoriteItems = page.locator('//div[@data-id="217824"]')
+        this.goToCart = page.locator('//div[@data-id="217825"]')
+
         //MAIN NAVIGATION RAIL
-        this.shopByCategoryButton = page.getByRole('button', { hasText: 'Shop by Category' })
+        this.sbcButton = page.locator('(//a[@aria-label="Shop by Category"])[2]')
+        this.sbcElement = page.locator('//div[@id="entry_217832"]')
+
         this.homeButton = page.locator("span.title", {hasText: 'Home' })        
         this.specialsButton =  page.locator("span.title", {hasText: 'Special' })
         this.blogButton =  page.locator("span.title", {hasText: 'Blog' })
@@ -38,8 +59,11 @@ exports.HomePage = class HomePage {
         this.searchResults = page.locator("td.text-left", {hasText: 'Palm Treo Pro'})
         this.searchResultQty = page.locator("div[class$='flex-nowrap'] > input")
 
-        //BANNER
-        this.bannerAd = page.locator(':nth-match(:class("d-block w-100"), 3)')
+        //BANNERS
+        this.bannerAd = page.locator('//div[@id="entry_213239"]')
+
+        this.bannerAd2 = page.locator('//div[@id="entry_213246"]')
+        this.bannnerAd2Button = page.locator('(//a[contains(@class,"btn-outline-primary")])[1]')
     }
 
     async search (term) {
@@ -59,9 +83,28 @@ exports.HomePage = class HomePage {
         await expect(this.page).toHaveURL(baseURL+'?route=account/login')
     }
 
+    async clickShopByCategoryMenu() {
+        await expect(this.sbcElement).toBeVisible()
+        // await expect(this.sbcElement).toHaveCSS('aria-label', 'Shop by Category')
+        
+        await expect(this.sbcButton).toBeVisible()
+        await this.sbcButton.click()
+    }
+
     async clickBannerAd(){
         await expect(this.bannerAd).toBeVisible()
-        await this.bannerAdapter.click()
+        await this.bannerAd.click()
+    }
+
+    async clickSecondBannerAd(){
+        await this.expect(this.bannerAd2).toBeVisible()
+        await this.expect(this.bannerAd2Button).toBeVisible()
+        await this.expect(this.bannerAd2Button).toBeEnabled()
+        await this.bannerAd2.click()
+    }
+
+    async navigateToCart(){
+        await this.goToCart.click()       
     }
 
     async navigateToRegistrationPage() {

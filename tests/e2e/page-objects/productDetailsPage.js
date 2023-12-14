@@ -16,7 +16,7 @@ exports.ProductDetailsPage = class ProductDetailsPage {
         //PRODUCT DETAILS - IMAGE RAIL .. features other products of the same brand
         //PRODUCT DETAILS - MAIN IMAGE
         //PRODUCT DETAILS
-        this.addToCartButton = page.locator(':nth-match(:title("Add to Cart"), 2)')
+        this.addToCartButton = page.locator('(//button[@title="Add to Cart"])[2]')
 
         //PRODUCT DESCRIPTION
         //PRODUCT REVIEWS
@@ -24,9 +24,15 @@ exports.ProductDetailsPage = class ProductDetailsPage {
     }
 
     async checkUI(){}
+
     async viewAnotherProduct(){}
     async addToFavorites(){}
-    async clickAddToCart(){}
+    
+    async clickAddToCart(){
+        await expect(this.addToCartButton).toBeVisible()
+        await this.addToCartButton.click()
+    }
+    
     async clickBuyNow(){}
     async viewSizeChart(){}
     async clickPopup(){}
