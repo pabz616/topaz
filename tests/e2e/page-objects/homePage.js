@@ -25,11 +25,15 @@ exports.HomePage = class HomePage {
         this.category_Cameras = page.locator('(//a[@data-category_id="33"])[1]')
         this.category_MP3 = page.locator('(//a[@data-category_id="34"])[1]')
 
+        //SEARCH MODULE
         this.searchModule = page.locator('//div[@data-id="217822"]')
         this.searchInput = page.locator('//input[@name="search"]')
         this.compareItems = page.locator('//div[@data-id="217823"]')
         this.favoriteItems = page.locator('//div[@data-id="217824"]')
         this.goToCart = page.locator('//div[@data-id="217825"]')
+
+        this.searchResults = page.locator("td.text-left", {hasText: 'Palm Treo Pro'})
+        this.searchResultQty = page.locator("div[class$='flex-nowrap'] > input")
 
         //MAIN NAVIGATION RAIL
         this.sbcButton = page.locator('(//a[@aria-label="Shop by Category"])[2]')
@@ -51,24 +55,57 @@ exports.HomePage = class HomePage {
         //MENU NAV LINKS
         this.desktopLink = page.locator("a[title=Desktop]")
 
-        //TODO - MOVE THESE TO PRODUCT DETAILS PAGE OBJECTS, REFACTOR TESTS THAT USE THIS
         this.palmTreoProLink = page.locator("div.carousel-item.active > img[title='Palm Treo Pro']")
         this.addToCart = page.locator("#container button[title='Add to Cart']")
         this.viewCart = page.locator("a.btn.btn-primary.btn-block",{hasText: 'View Cart'})
 
-        this.searchResults = page.locator("td.text-left", {hasText: 'Palm Treo Pro'})
-        this.searchResultQty = page.locator("div[class$='flex-nowrap'] > input")
-
-        //BANNERS
+        //BANNER MODULE - MAIN
         this.bannerAd = page.locator('//div[@id="entry_213239"]')
 
+        //BANNER MODULE - TOP LOAD WASHING MACHINE
         this.bannerAd2 = page.locator('//div[@id="entry_213246"]')
-        this.bannnerAd2Button = page.locator('(//a[contains(@class,"btn-outline-primary")])[1]')
+        this.bannerAd2Button = page.locator('(//a[contains(@class,"btn-outline-primary")])[1]')
+
+        //BANNER MODULE - CATEGORIES
+        this.bannerProduct1ShopNow = page.locator('//div[@id="entry_213244"]') //Lumix S Series 
+        this.bannerProduct2ShopNow = page.locator('//div[@id="entry_213245"]') //MPOW H12 RC Headphones
+   
+        //BANNER MODULE - TOP TRENDING CATEGORIES
+        this.bannerImageCat1 = page.locator('//div[@id="entry_213248"]')
+        this.bannerImageCat2 = page.locator('//div[@id="entry_213251"]')
+
+        //BANNER MODULE - TOP PRODUCTS
+        this.bannerImageTopProd = page.locator('//div[@id="entry_213257"]')
+ 
+
+        //BANNER MODULE - LATEST
+        this.bannerImageLatest = page.locator('//div[@id="entry_213260"]')
+
+        //BANNER MODULE - POPULAR
+        this.bannerImagePopular = page.locator('//div[@id="entry_213263"]')
+
+        //BANNER MODULE - TOP COLLECTION
+        this.popularCollectionLink = page.locator('//a[contains(.,"Popular")]')
+        this.latestCollectionLink = page.locator('//a[contains(.,"Latest")]')
+        this.bestSellerLink = page.locator('//a[contains(.,"Best ")]')
+        this.bannerTopCollection = page.locator('(//div[contains(@class,"mz-tab-listing-content")])[2]')
+
+        //BANNER MODULE - APPLE IPAD
+        this.appleAd = page.locator('//div[@id="entry_213265"]')
+
+        //BANNER MODULE - FEATURED ITEMS
+        this.bannerFeaturedItem1 = page.locator('//div[@id="entry_213268"]')
+        this.bannerTopCollection = page.locator('//div[@id="entry_213270"]')
+
+        //BANNER MODULE - FROM THE BLOG
+        this.bannerFromTheBlog = page.locator('//div[@id="entry_213272"]')
+
     }
 
-    async enterSearchTerm (term){
-        
+    async enterSearchTerm (term){        
     }
+
+    //TODO - REFACTOR THIS
     async search (term) {
         await this.megaMenu.hover()
         await this.desktopLink.click()
@@ -104,6 +141,13 @@ exports.HomePage = class HomePage {
         await this.expect(this.bannerAd2Button).toBeVisible()
         await this.expect(this.bannerAd2Button).toBeEnabled()
         await this.bannerAd2.click()
+    }
+
+    async clickCategoriesAd(){
+        await expect(this.bannerProduct1ShopNow).toBeVisible()
+        await expect(this.bannerProduct2ShopNow).toBeVisible()
+
+        await this.bannerProduct1ShopNow.click()
     }
 
     async navigateToCart(){

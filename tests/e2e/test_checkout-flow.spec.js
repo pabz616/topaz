@@ -75,16 +75,59 @@ test.describe('Open site and perform a search', () => {
         //checkout flow incomplete .. bug - size required for a camera??
     });
 
-    //TODO - PURCHASE FROM HOME PAGE - PROMO 2 (BELOW BANNER) -- not working!   
-    //TODO - PURCHASE FROM HOME PAGE - PROMO 3 (BRAND)
-    //TODO - PURCHASE FROM HOME PAGE - TRENDING CATEGORIES    
+    //TODO - PURCHASE FROM HOME PAGE - PROMO 2 (BELOW BANNER) -- not working!
+    test.skip('PURCHASE FROM HOME PAGE - PROMO 2 (Top Load Washing Machine)', async ({page}) => {})  
+    
+    test('PURCHASE FROM HOME PAGE - PROMO 3 (Categories)', async ({page}) => {
+        const onHomePage = new HomePage(page)
+        const onSBCMenu = new ShopCategoryPage(page)
+        const onPCP = new ProductCategoryPage(page)
+        const onPDP = new ProductDetailsPage(page)
+        const onCartPage = new CartPage (page)
+        const onCheckoutPage = new CheckoutPage(page)
+        const onOrderConfirmationPage = new OrderConfirmationPage(page)
+        const onOrderSuccessPage = new OrderSuccessPage(page)
+
+        await onHomePage.clickCategoriesAd()
+        await onPCP.selectFirstProduct()
+        await onPDP.clickAddToCart()
+        await onHomePage.navigateToCart()
+        await onCartPage.proceedToCheckout()
+        await onCheckoutPage.loginAsReturnCustomer(email, pwd)
+        await onCheckoutPage.addComment()
+        await onCheckoutPage.acceptTermsAndConditions()
+        await onCheckoutPage.continueWithPurchase()
+        await onOrderConfirmationPage.confirmPurchaseOrder()
+        await onOrderSuccessPage.completePurchaseWorkflow()
+    })
+   
+    //TODO - PURCHASE FROM HOME PAGE - TRENDING CATEGORIES
+    test.skip('2', async ({page}) => {})
+
     //TODO - PURCHASE FROM HOME PAGE - PROMO 4 (HP 25 HEADPHONES)
+    test.skip('3', async ({page}) => {})
+
     //TODO - PURCHASE FROM HOME PAGE - TOP PRODUCTS
+    test.skip('4', async ({page}) => {})
+
     //TODO - PURCHASE FROM HOME PAGE - DISCOUNT PROMO
+    test.skip('5', async ({page}) => {})
+
     //TODO - PURCHASE FROM HOME PAGE - TOP COLLECTION - POPULAR
+    test.skip('6', async ({page}) => {})
+
     //TODO - PURCHASE FROM HOME PAGE - TOP COLLECTION - LATEST
+    test.skip('7', async ({page}) => {})
+
     //TODO - PURCHASE FROM HOME PAGE - TOP COLLECTION - BEST SELLER
+    test.skip('8', async ({page}) => {})
+
     //TODO - PURCHASE FROM HOME PAGE - SHOP BY BRAND
+    test.skip('9', async ({page}) => {})
+
     //TODO - PURCHASE FROM HOME PAGE - PROMO 5
+    test.skip('10', async ({page}) => {})
+
     //TODO - PURCHASE FROM MEGA MENU
+    test.skip('11', async ({page}) => {})
 })
