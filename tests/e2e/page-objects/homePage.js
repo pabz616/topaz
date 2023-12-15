@@ -74,10 +74,16 @@ exports.HomePage = class HomePage {
         this.bannerImageCat1 = page.locator('//div[@id="entry_213248"]')
         this.bannerImageCat2 = page.locator('//div[@id="entry_213251"]')
 
+        this.desktopImg = page.locator('//img[@alt="Desktops"]')
+        this.laptopImg = page.locator('//img[@alt="Laptops"]')
+        this.componentsImg = page.locator('//img[@alt="Components"]')
+        this.tabletsImg = page.locator('//img[@alt="Tablets"]')
+        this.softwareImg = page.locator('//img[@alt="Software"]')
+        this.phonesPDAImg = page.locator('//img[@alt="Phones & PDAs"]')
+
         //BANNER MODULE - TOP PRODUCTS
         this.bannerImageTopProd = page.locator('//div[@id="entry_213257"]')
  
-
         //BANNER MODULE - LATEST
         this.bannerImageLatest = page.locator('//div[@id="entry_213260"]')
 
@@ -148,6 +154,20 @@ exports.HomePage = class HomePage {
         await expect(this.bannerProduct2ShopNow).toBeVisible()
 
         await this.bannerProduct1ShopNow.click()
+    }
+
+    async clickShopByTopTrendingCategoryAd(){
+        await expect(this.bannerImageCat1).toBeVisible()
+
+        await expect(this.desktopImg).toBeVisible()
+        await expect(this.desktopImg).toBeVisible()
+        await expect(this.laptopImg).toBeVisible()
+        await expect(this.componentsImg).toBeVisible()
+        await expect(this.tabletsImg).toBeVisible()
+        await expect(this.softwareImg).toBeVisible()
+        await expect(this.phonesPDAImg).toBeVisible()
+
+        await this.desktopImg.click()
     }
 
     async navigateToCart(){
