@@ -72,7 +72,10 @@ exports.HomePage = class HomePage {
    
         //BANNER MODULE - TOP TRENDING CATEGORIES
         this.bannerImageCat1 = page.locator('//div[@id="entry_213248"]')
+
+        //BANNER MODULE - FEATURED CATEGORY
         this.bannerImageCat2 = page.locator('//div[@id="entry_213251"]')
+        this.bannerImageCat3 = page.locator('//div[@id="entry_213255"]')
 
         this.desktopImg = page.locator('//img[@alt="Desktops"]')
         this.laptopImg = page.locator('//img[@alt="Laptops"]')
@@ -168,6 +171,11 @@ exports.HomePage = class HomePage {
         await expect(this.phonesPDAImg).toBeVisible()
 
         await this.desktopImg.click()
+    }
+
+    async clickFeaturedCategoryAd(){
+        await expect(this.bannerImageCat3).toBeVisible()
+        await this.bannerImageCat3.click()
     }
 
     async navigateToCart(){

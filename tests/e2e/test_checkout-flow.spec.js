@@ -122,8 +122,25 @@ test.describe('Open site and perform a search', () => {
         await onOrderSuccessPage.completePurchaseWorkflow()
     })
 
-    //TODO - PURCHASE FROM HOME PAGE - PROMO 4 (HP 25 HEADPHONES)
-    test.skip('3', async ({page}) => {})
+    test('PURCHASE FROM FEATURED CATEGORY - PROMO 4 (HP 25 HEADPHONES)', async ({page}) => {
+        const onHomePage = new HomePage(page)
+        const onPDP = new ProductDetailsPage(page)
+        const onCartPage = new CartPage (page)
+        const onCheckoutPage = new CheckoutPage(page)
+        const onOrderConfirmationPage = new OrderConfirmationPage(page)
+        const onOrderSuccessPage = new OrderSuccessPage(page)
+
+        await onHomePage.clickFeaturedCategoryAd()
+        await onPDP.clickAddToCart()
+        await onHomePage.navigateToCart()
+        await onCartPage.proceedToCheckout()
+        await onCheckoutPage.loginAsReturnCustomer(email, pwd)
+        await onCheckoutPage.addComment()
+        await onCheckoutPage.acceptTermsAndConditions()
+        await onCheckoutPage.continueWithPurchase()
+        await onOrderConfirmationPage.confirmPurchaseOrder()
+        await onOrderSuccessPage.completePurchaseWorkflow()
+    })
 
     //TODO - PURCHASE FROM HOME PAGE - TOP PRODUCTS
     test.skip('4', async ({page}) => {})
