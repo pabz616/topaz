@@ -93,7 +93,6 @@ exports.HomePage = class HomePage {
         this.topProductAd3 = page.locator('//a[@id="mz-product-listing-image-37213259-0-2"]')
         this.topProductAd4 = page.locator('//a[@id="mz-product-listing-image-37213259-0-3"]')
 
-
         //BANNER MODULE - LATEST
         this.bannerImageLatest = page.locator('//div[@id="entry_213260"]')
 
@@ -105,6 +104,12 @@ exports.HomePage = class HomePage {
         this.latestCollectionLink = page.locator('//a[contains(.,"Latest")]')
         this.bestSellerLink = page.locator('//a[contains(.,"Best ")]')
         this.bannerTopCollection = page.locator('(//div[contains(@class,"mz-tab-listing-content")])[2]')
+        //
+        this.HTCTouchHD = page.locator('//a[@id="mz-product-listing-image-39213264-0-0"]')
+        this.appleCinema30 = page.locator('//a[@id="mz-product-listing-image-39213264-0-1"]')
+        this.iPhone = page.locator('//a[@id="mz-product-listing-image-39213264-0-2"]')
+        this.canonEO5 = page.locator('//a[@id="mz-product-listing-image-39213264-0-3"]')
+        this.palmTreoPro = page.locator('//a[@id="mz-product-listing-image-39213264-0-4"]')
 
         //BANNER MODULE - APPLE IPAD
         this.appleAd = page.locator('//div[@id="entry_213265"]')
@@ -166,6 +171,11 @@ exports.HomePage = class HomePage {
         await this.bannerProduct1ShopNow.click()
     }
 
+    async clickFeaturedCategoryAd(){
+        await expect(this.bannerImageCat3).toBeVisible()
+        await this.bannerImageCat3.click()
+    }
+
     async clickShopByTopTrendingCategoryAd(){
         await expect(this.bannerImageCat1).toBeVisible()
 
@@ -188,10 +198,25 @@ exports.HomePage = class HomePage {
 
         await this.topProductAd1.click()
     }
+    
+    async clickDiscountPromoAd() {
+        await expect(this.bannerImageLatest).toBeVisible()
+        await this.bannerImageLatest.click()
+    }
 
-    async clickFeaturedCategoryAd(){
-        await expect(this.bannerImageCat3).toBeVisible()
-        await this.bannerImageCat3.click()
+    async clickTopCollectionAd() {
+        await expect(this.HTCTouchHD).toBeVisible()
+        await expect(this.appleCinema30).toBeVisible()
+        await expect(this.iPhone ).toBeVisible()
+        await expect(this.canonEO5).toBeVisible()
+        await expect(this.palmTreoPro).toBeVisible()
+        await this.appleCinema30.click()
+    }
+
+    async clickBrandAd(){
+        await expect(this.appleAd).toBeVisible()
+        await this.appleAd.click()
+    
     }
 
     async navigateToCart(){

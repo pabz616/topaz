@@ -162,20 +162,67 @@ test.describe('Open site and perform a search', () => {
         await onOrderSuccessPage.completePurchaseWorkflow()
     })
 
-    //TODO - PURCHASE FROM HOME PAGE - DISCOUNT PROMO
-    test.skip('5', async ({page}) => {})
+    //TODO - PURCHASE FROM HOME PAGE - DISCOUNT PROMO -- not working!
+    test.skip('PURCHASE FROM HOME PAGE - DISCOUNT PROMO', async ({page}) => {
+        const onHomePage = new HomePage(page)
+        const onPDP = new ProductDetailsPage(page)
+        const onCartPage = new CartPage (page)
+        const onCheckoutPage = new CheckoutPage(page)
+        const onOrderConfirmationPage = new OrderConfirmationPage(page)
+        const onOrderSuccessPage = new OrderSuccessPage(page)
 
-    //TODO - PURCHASE FROM HOME PAGE - TOP COLLECTION - POPULAR
-    test.skip('6', async ({page}) => {})
+        await onHomePage.clickDiscountPromoAd()
+        await onPDP.clickAddToCart()
+        await onHomePage.navigateToCart()
+        await onCartPage.proceedToCheckout()
+        await onCheckoutPage.loginAsReturnCustomer(email, pwd)
+        await onCheckoutPage.addComment()
+        await onCheckoutPage.acceptTermsAndConditions()
+        await onCheckoutPage.continueWithPurchase()
+        await onOrderConfirmationPage.confirmPurchaseOrder()
+        await onOrderSuccessPage.completePurchaseWorkflow()
+    })
 
-    //TODO - PURCHASE FROM HOME PAGE - TOP COLLECTION - LATEST
-    test.skip('7', async ({page}) => {})
+    //TODO - PURCHASE FROM HOME PAGE - TOP COLLECTION -- bug on PDP: Selected product requires 'size' attribute erroneously 
+    test.skip('PURCHASE FROM HOME PAGE - TOP COLLECTION', async ({page}) => {
+        const onHomePage = new HomePage(page)
+        const onPDP = new ProductDetailsPage(page)
+        const onCartPage = new CartPage (page)
+        const onCheckoutPage = new CheckoutPage(page)
+        const onOrderConfirmationPage = new OrderConfirmationPage(page)
+        const onOrderSuccessPage = new OrderSuccessPage(page)
 
-    //TODO - PURCHASE FROM HOME PAGE - TOP COLLECTION - BEST SELLER
-    test.skip('8', async ({page}) => {})
+        await onHomePage.clickTopCollectionAd()
+        await onPDP.clickAddToCart()
+        await onHomePage.navigateToCart()
+        await onCartPage.proceedToCheckout()
+        await onCheckoutPage.loginAsReturnCustomer(email, pwd)
+        await onCheckoutPage.addComment()
+        await onCheckoutPage.acceptTermsAndConditions()
+        await onCheckoutPage.continueWithPurchase()
+        await onOrderConfirmationPage.confirmPurchaseOrder()
+        await onOrderSuccessPage.completePurchaseWorkflow()
+    })
 
-    //TODO - PURCHASE FROM HOME PAGE - SHOP BY BRAND
-    test.skip('9', async ({page}) => {})
+    test('PURCHASE FROM HOME PAGE - SHOP BY BRAND', async ({page}) => {
+        const onHomePage = new HomePage(page)
+        const onPDP = new ProductDetailsPage(page)
+        const onCartPage = new CartPage (page)
+        const onCheckoutPage = new CheckoutPage(page)
+        const onOrderConfirmationPage = new OrderConfirmationPage(page)
+        const onOrderSuccessPage = new OrderSuccessPage(page)
+
+        await onHomePage.clickBrandAd()
+        await onPDP.clickAddToCart()
+        await onHomePage.navigateToCart()
+        await onCartPage.proceedToCheckout()
+        await onCheckoutPage.loginAsReturnCustomer(email, pwd)
+        await onCheckoutPage.addComment()
+        await onCheckoutPage.acceptTermsAndConditions()
+        await onCheckoutPage.continueWithPurchase()
+        await onOrderConfirmationPage.confirmPurchaseOrder()
+        await onOrderSuccessPage.completePurchaseWorkflow()
+    })
 
     //TODO - PURCHASE FROM HOME PAGE - PROMO 5
     test.skip('10', async ({page}) => {})
