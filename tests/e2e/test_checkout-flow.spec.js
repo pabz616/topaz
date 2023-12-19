@@ -224,9 +224,46 @@ test.describe('Open site and perform a search', () => {
         await onOrderSuccessPage.completePurchaseWorkflow()
     })
 
-    //TODO - PURCHASE FROM HOME PAGE - PROMO 5
-    test.skip('10', async ({page}) => {})
+     //TODO - PURCHASE FROM HOME PAGE - Feature Ad -- bug on home page: feature ad is missing product image
+    test.skip('PURCHASE FROM HOME PAGE - Feature Ad', async ({page}) => {
+        const onHomePage = new HomePage(page)
+        const onPDP = new ProductDetailsPage(page)
+        const onCartPage = new CartPage (page)
+        const onCheckoutPage = new CheckoutPage(page)
+        const onOrderConfirmationPage = new OrderConfirmationPage(page)
+        const onOrderSuccessPage = new OrderSuccessPage(page)
 
-    //TODO - PURCHASE FROM MEGA MENU
-    test.skip('11', async ({page}) => {})
+        await onHomePage.clickFeaturedAd()
+        await onPDP.clickAddToCart()
+        await onHomePage.navigateToCart()
+        await onCartPage.proceedToCheckout()
+        await onCheckoutPage.loginAsReturnCustomer(email, pwd)
+        await onCheckoutPage.addComment()
+        await onCheckoutPage.acceptTermsAndConditions()
+        await onCheckoutPage.continueWithPurchase()
+        await onOrderConfirmationPage.confirmPurchaseOrder()
+        await onOrderSuccessPage.completePurchaseWorkflow()
+    })
+
+    test('PURCHASE FROM MEGA MENU', async ({page}) => {
+        const onHomePage = new HomePage(page)
+        const onPCP = new ProductCategoryPage(page)
+        const onPDP = new ProductDetailsPage(page)
+        const onCartPage = new CartPage (page)
+        const onCheckoutPage = new CheckoutPage(page)
+        const onOrderConfirmationPage = new OrderConfirmationPage(page)
+        const onOrderSuccessPage = new OrderSuccessPage(page)
+
+        await onHomePage.clickMegaMenuItem('Mobile Cases')
+        await onPCP.selectFirstProduct()
+        await onPDP.clickBuyNow()
+        await onHomePage.navigateToCart()
+        await onCartPage.proceedToCheckout()
+        await onCheckoutPage.loginAsReturnCustomer(email, pwd)
+        await onCheckoutPage.addComment()
+        await onCheckoutPage.acceptTermsAndConditions()
+        await onCheckoutPage.continueWithPurchase()
+        await onOrderConfirmationPage.confirmPurchaseOrder()
+        await onOrderSuccessPage.completePurchaseWorkflow()
+    })
 })

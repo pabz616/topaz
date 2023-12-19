@@ -219,6 +219,19 @@ exports.HomePage = class HomePage {
     
     }
 
+    async clickFeaturedAd(){
+        await expect(this.bannerFeaturedItem1).toBeVisible()
+        await expect(this.bannerFeaturedItem2).toBeVisible()
+        await this.bannerTopCollection.click()
+    }
+
+    async clickMegaMenuItem(item){
+        let menuLink = this.page.getByText(`${item}`);
+
+        await this.megaMenu.hover()
+        await menuLink.click()
+    }
+
     async navigateToCart(){
         await this.goToCart.click()       
     }

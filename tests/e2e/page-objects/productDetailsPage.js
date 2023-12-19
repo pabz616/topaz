@@ -16,6 +16,7 @@ exports.ProductDetailsPage = class ProductDetailsPage {
         //PRODUCT DETAILS - IMAGE RAIL .. features other products of the same brand
         //PRODUCT DETAILS - MAIN IMAGE
         //PRODUCT DETAILS
+        this.buyNowButton = page.locator('//button[contains(@class,"btn-buynow")]')
         this.addToCartButton = page.locator('(//button[@title="Add to Cart"])[2]')
 
         //PRODUCT DESCRIPTION
@@ -33,7 +34,12 @@ exports.ProductDetailsPage = class ProductDetailsPage {
         await this.addToCartButton.click()
     }
     
-    async clickBuyNow(){}
+    async clickBuyNow(){
+        await expect(this.buyNowButton).toBeVisible()
+        await expect(this.buyNowButton).not.toBeDisabled()
+        await this.buyNowButton.click()
+    }
+
     async viewSizeChart(){}
     async clickPopup(){}
     async clickAskQuestion(){}
