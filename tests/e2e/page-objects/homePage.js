@@ -86,7 +86,14 @@ exports.HomePage = class HomePage {
 
         //BANNER MODULE - TOP PRODUCTS
         this.bannerImageTopProd = page.locator('//div[@id="entry_213257"]')
- 
+
+        //BANNER MODULE - TOP PRODUCTS GALLERY
+        this.topProductAd1 = page.locator('//a[@id="mz-product-listing-image-37213259-0-0"]')
+        this.topProductAd2 = page.locator('//a[@id="mz-product-listing-image-37213259-0-1"]')
+        this.topProductAd3 = page.locator('//a[@id="mz-product-listing-image-37213259-0-2"]')
+        this.topProductAd4 = page.locator('//a[@id="mz-product-listing-image-37213259-0-3"]')
+
+
         //BANNER MODULE - LATEST
         this.bannerImageLatest = page.locator('//div[@id="entry_213260"]')
 
@@ -171,6 +178,15 @@ exports.HomePage = class HomePage {
         await expect(this.phonesPDAImg).toBeVisible()
 
         await this.desktopImg.click()
+    }
+
+    async clickTopProductsAd(){
+        await expect(this.topProductAd1).toBeVisible()
+        await expect(this.topProductAd2).toBeVisible()
+        await expect(this.topProductAd3).toBeVisible()
+        await expect(this.topProductAd4).toBeVisible()
+
+        await this.topProductAd1.click()
     }
 
     async clickFeaturedCategoryAd(){
